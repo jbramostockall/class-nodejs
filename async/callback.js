@@ -5,6 +5,7 @@ function hola(name, myFunt){
         myFunt();
     },2500);
 }
+
 function adios(name, myFunt){
     setTimeout(function(){
         console.log(`Adios ${name}`);
