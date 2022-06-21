@@ -1,5 +1,5 @@
 let nameT = 'John';
-function hola(name){
+async function hola(name){
     let promes =  new Promise((resolve,reject)=>{
         setTimeout(()=>{
             console.log(`Hola ${name}`);
@@ -8,7 +8,7 @@ function hola(name){
     });
     return promes;
 }
-function hablar(name){
+async function hablar(name){
     let promes =  new Promise((resolve,reject)=>{
         setTimeout(()=>{
             console.log(`bla bla bla ${name}`);
@@ -17,13 +17,13 @@ function hablar(name){
     });
     return promes;
 }
-function functionErr(name){
+async function functionErr(name){
     let promes =  new Promise((resolve,reject)=>{
         reject(name);
     });
     return promes;
 }
-function despedida(name){
+async function despedida(name){
     let promes =  new Promise((resolve,reject)=>{
         setTimeout(()=>{
             console.log(`Adios ${name}`);
@@ -32,16 +32,16 @@ function despedida(name){
     });
     return promes;
 }
+
+async function main(){
+    console.log('in process');
+    await hola(nameT);
+    await hablar(nameT);
+    await hablar(nameT);
+    await despedida(nameT);
+    console.log('done');
+}
+
 console.log('begin');
-hola(nameT)
-    .then(hablar)
-    .then(hablar)
-    .then(functionErr)
-    .then(despedida)
-    .then(() => {
-        console.log('end');
-    }
-    ).catch(error =>{
-        console.log('Error critico');
-        console.log(error);
-    });
+main();
+console.log('seconds');
